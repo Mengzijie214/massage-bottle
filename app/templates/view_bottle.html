@@ -1,0 +1,23 @@
+<!--显示漂流瓶并回复-->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bottle">
+    {% if bottle %}
+        <h3>你捞到一个漂流瓶 🎣</h3>
+        <div class="message">
+            <p>{{ bottle.content }}</p>
+            <small>{{ bottle.create_time.strftime('%Y-%m-%d %H:%M') }}</small>
+        </div>
+
+        <form action="/reply/{{ bottle.id }}" method="POST" style="margin-top: 20px">
+            <textarea name="content" placeholder="写下你的回复..." required></textarea>
+            <button type="submit">回复漂流瓶</button>
+        </form>
+    {% else %}
+        <p>暂时没有漂流瓶，过会儿再来试试吧～</p>
+        <a href="/dashboard">返回大海</a>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+# 基础依赖
+Flask==2.0.3
+Flask-MySQLdb==0.2.0
+passlib==1.7.4
+
+# 环境管理
+python-dotenv==0.19.2
+
+# 安全扩展（推荐安装）
+Flask-WTF==1.0.0
+
+# 可选依赖（用于替代方案）
+# pymysql==1.0.2  # 如果使用pymysql替代mysqlclient

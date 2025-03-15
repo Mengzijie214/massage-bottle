@@ -1,0 +1,18 @@
+<!--首页内容-->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bottle">
+    <h1>解忧漂流瓶</h1>
+    <p>在这里，你可以：</p>
+    <ul>
+        <li>写下心事装进漂流瓶</li>
+        <li>随机拾取他人的漂流瓶</li>
+        <li>与陌生人进行匿名交流</li>
+    </ul>
+    {% if not session.loggedin %}
+        <p>请先 <a href="/login">登录</a> 或 <a href="/register">注册</a></p>
+    {% endif %}
+</div>
+{% endblock %}

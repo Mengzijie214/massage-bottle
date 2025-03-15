@@ -1,0 +1,39 @@
+<!--展示用户发送的漂流瓶以及回复-->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>我的漂流瓶记录</h2>
+    {% if bottles %}
+        <div class="bottle-list">
+            {% for item in bottles %}
+                <div class="bottle-item">
+                    <div class="bottle-meta">
+                        <span class="bottle-id">#{{ item.bottle_id }}</span>
+                        <span class="time">{{ item.bottle_time }}</span>
+                    </div>
+                    <p class="content">{{ item.bottle_content }}</p>
+
+                    {% if item.reply_content %}
+                        <div class="reply-box">
+                            <div class="reply-meta">
+                                <span class="label">回复时间:</span>
+                                <span class="time">{{ item.reply_time }}</span>
+                            </div>
+                            <p class="content">{{ item.reply_content }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <p>尚未发布任何漂流瓶</p>
+            <a href="{{ url_for('main.dashboard') }}" class="btn">
+                去发布第一个漂流瓶
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

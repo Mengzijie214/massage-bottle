@@ -1,0 +1,17 @@
+<!--发送和获取漂流瓶-->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bottle">
+    <h2>漂流瓶大海</h2>
+    <form action="/send_bottle" method="POST">
+        <textarea name="content" placeholder="写下你想说的话...（最多500字）" maxlength="500" required></textarea>
+        <button type="submit">扔出漂流瓶</button>
+    </form>
+
+    <div style="margin-top: 30px; text-align: center">
+        <a href="/get_bottle" style="font-size: 1.2em">🌊 捞一个漂流瓶</a>
+    </div>
+</div>
+{% endblock %}
