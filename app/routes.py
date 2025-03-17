@@ -10,7 +10,7 @@ from app import create_app
 
 main_bp = Blueprint('main', __name__)
 
-
+# 登录
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -19,12 +19,12 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-
+# 主页
 @main_bp.route('/')
 def index():
     return render_template('index.html')
 
-
+# 功能实现
 @main_bp.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -96,7 +96,7 @@ def reply(bottle_id):
 @login_required
 def my_bottles():
     cursor = mysql.connection.cursor()
-    cursor.execute('''
+    cursor.execute(''' 
         SELECT
             b.id AS bottle_id,
             b.content AS bottle_content,
